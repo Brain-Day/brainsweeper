@@ -30,11 +30,35 @@ const generateMinefield = (gridSize: number, mines: number, rowLength: number): 
 }
 
 const generateMineLocations = (gridSize: number, mines: number): Object => {
+  const illegal = {
+    223: true,
+    224: true,
+    225: true,
+    226: true,
+    253: true,
+    254: true,
+    255: true,
+    256: true,
+    // 212: true,
+    // 213: true,
+    // 238: true,
+    // 239: true,
+    // 240: true,
+    // 241: true,
+    // 242: true,
+    // 243: true,
+    // 268: true,
+    // 269: true,
+    // 270: true,
+    // 271: true,
+    // 272: true,
+    // 273: true
+  }
   const mineLocations = {}
   let mineCount = 0
   while (mineCount < mines) {
     const idx = Math.floor(Math.random() * gridSize)
-    if (!mineLocations[idx]) {
+    if (!mineLocations[idx] && !illegal[idx]) {
       mineLocations[idx] = true
       mineCount++
     }
